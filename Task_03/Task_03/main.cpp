@@ -15,7 +15,14 @@ public:
 		delete[] array;
 	}
 
+	//prohibit copy constructor and operator
+
+	vector(const vector&) = delete;
+	vector& operator = (const vector&) = delete;
+
 	T at(int index) {
+		if (index > last || index < 0)
+			throw std::runtime_error("Index is out of memory!");
 		return array[index];
 	}
 
@@ -25,12 +32,11 @@ public:
 		}
 		if (act_capacity >= log_size) {
 			T* new_arr = new T[act_capacity * 2]{0};
-			for (int i = 0; i < act_capacity; ++i) {
+			for (int i = 0; i < log_size; ++i) {
 				new_arr[i] = array[i];
-
 			}
 			array = new_arr;
-			delete[] new_arr;
+			//delete[] new_arr;
 			last += 1;
 			act_capacity *= 2;
 		}
@@ -63,6 +69,13 @@ int main() {
 	vc.print(); 
 
 	std::cout << vc.size() << std::endl;
-	std::cout << vc.capacity();
+	std::cout << vc.capacity() << std:: endl;
+	
+	try {
+		std::cout << vc.at(3);
+	}
+	catch (std::runtime_error& ex) {
+		std::cout << ex.what();
+	}
 	return 0;
 }
