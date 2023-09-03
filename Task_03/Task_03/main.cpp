@@ -12,7 +12,7 @@ public:
 		array = new T;
 	}
 	~vector() {
-		delete[] array;
+		delete array;
 	}
 
 	//prohibit copy constructor and operator
@@ -35,8 +35,8 @@ public:
 			for (int i = 0; i < log_size; ++i) {
 				new_arr[i] = array[i];
 			}
+			delete array; //delete [] array?
 			array = new_arr;
-			//delete[] new_arr;
 			last += 1;
 			act_capacity *= 2;
 		}

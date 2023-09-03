@@ -3,15 +3,6 @@
 #include <map>
 #include <algorithm>
 
-
-class compare {
-public:
-	compare() = default;
-	int operator() (int a, int b) {
-		return a > b;
-	}
-};
-
 int main() {
 
 	char letter[] = { "Hello world!!" };
@@ -55,13 +46,6 @@ int main() {
 	for (const auto& k : mmic_new) {
 		std::cout << k.first << ": " << k.second << std::endl;
 	}
-	/*std::sort(mci.begin(), mci.end(),
-		[](auto itr)
-		{
-			return (*itr).second > (*(++itr)).second;
-		}
-	);*/
-
 
 	return 0;
 }
