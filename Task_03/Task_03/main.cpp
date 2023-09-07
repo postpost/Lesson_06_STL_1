@@ -35,7 +35,7 @@ public:
 				new_arr[i] = array[i];
 			}
 			delete [] array; //delete old resource
-			array = new_arr; //pointer to the new reslource
+			array = new_arr; //pointer to the new resource
 			last += 1;
 			act_capacity *= 2;
 		}
