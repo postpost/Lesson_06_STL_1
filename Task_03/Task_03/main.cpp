@@ -9,14 +9,13 @@ class vector {
 public:
 	vector() :act_capacity{ 1 }, log_size{0}, last{-1}
 	{
-		array = new T;
+		array = new T[1];
 	}
 	~vector() {
-		delete array;
+		delete [] array;
 	}
 
 	//prohibit copy constructor and operator
-
 	vector(const vector&) = delete;
 	vector& operator = (const vector&) = delete;
 
@@ -35,8 +34,8 @@ public:
 			for (int i = 0; i < log_size; ++i) {
 				new_arr[i] = array[i];
 			}
-			delete array; //delete [] array?
-			array = new_arr;
+			delete [] array; //delete old resource
+			array = new_arr; //pointer to the new reslource
 			last += 1;
 			act_capacity *= 2;
 		}
